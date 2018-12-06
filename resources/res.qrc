@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/action">
+        <file>img/connect.png</file>
+        <file>img/disconnect.png</file>
+        <file>img/wroom.png</file>
+        <file>img/settings.png</file>
+        <file>img/close.png</file>
+    </qresource>
+</RCC>

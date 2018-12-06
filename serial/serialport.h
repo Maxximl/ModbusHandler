@@ -8,15 +8,21 @@ class serialPort : public QObject
     Q_OBJECT
 public:
     explicit serialPort(QObject *parent = nullptr);
+
 void sendData(QByteArray data);
+
+QByteArray  getData();
 
 signals:
 void dataReady();
 
-public slots:
+private slots:
+void readData();
 
 private:
-QSerialPort *sport = nullptr;
+QSerialPort *sPort = nullptr;
+
+QByteArray data;
     
 };
 

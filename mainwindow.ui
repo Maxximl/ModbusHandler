@@ -167,7 +167,7 @@
             </layout>
            </item>
            <item row="1" column="0">
-            <widget class="QRadioButton" name="createRequestBtn">
+            <widget class="QRadioButton" name="createRequestRadio">
              <property name="text">
               <string>Create Request:</string>
              </property>
@@ -209,7 +209,7 @@
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QRadioButton" name="typeRequestBtn">
+            <widget class="QRadioButton" name="typeRequestRadio">
              <property name="text">
               <string>Type Request:</string>
              </property>
@@ -262,21 +262,108 @@
      <x>0</x>
      <y>0</y>
      <width>724</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuConnect">
+    <property name="title">
+     <string>Connect</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuDisconnect">
+    <property name="title">
+     <string>Disconnect</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuConnect"/>
+   <addaction name="menuDisconnect"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionConnect"/>
+   <addaction name="actionDisconnect"/>
+   <addaction name="actionClear"/>
+   <addaction name="actionSettings"/>
+   <addaction name="actionClose"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionConnect">
+   <property name="icon">
+    <iconset resource="resources/res.qrc">
+     <normaloff>:/action/img/connect.png</normaloff>:/action/img/connect.png</iconset>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>8</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionDisconnect">
+   <property name="icon">
+    <iconset resource="resources/res.qrc">
+     <normaloff>:/action/img/disconnect.png</normaloff>:/action/img/disconnect.png</iconset>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="icon">
+    <iconset resource="resources/res.qrc">
+     <normaloff>:/action/img/wroom.png</normaloff>:/action/img/wroom.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutQtRole</enum>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="resources/res.qrc">
+     <normaloff>:/action/img/settings.png</normaloff>:/action/img/settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset resource="resources/res.qrc">
+     <normaloff>:/action/img/close.png</normaloff>:/action/img/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

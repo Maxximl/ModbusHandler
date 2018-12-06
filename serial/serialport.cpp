@@ -2,11 +2,22 @@
 #include <QSerialPort>
 serialPort::serialPort(QObject *parent) : QObject(parent)
 {
- sport = new QSerialPort;
- connect(sport, &QSerialPort::readyRead, this, [=]{emit dataReady();});
+ sPort = new QSerialPort;
+ connect(sPort, &QSerialPort::readyRead, this, &serialPort::readData);
 }
 
 void serialPort::sendData(QByteArray data)
 {
-    sport->write(data);
+    sPort->write(data);
+}
+
+QByteArray serialPort::getData()
+{
+    return data;
+}
+
+void serialPort::readData()
+{
+    data = sPort->readAll();
+    emit dataReady();
 }

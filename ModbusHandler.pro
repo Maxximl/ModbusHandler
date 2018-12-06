@@ -27,11 +27,14 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    serial/serialport.cpp
+    serial/serialport.cpp \
+    modbuslogic.cpp
 
 HEADERS += \
         mainwindow.h \
-    serial/serialport.h
+    serial/serialport.h \
+    mainwindow.h \
+    modbuslogic.h
 
 FORMS += \
         mainwindow.ui \
@@ -41,3 +44,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources/res.qrc
