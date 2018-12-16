@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-class serialPort;
+#include <QSerialPort>
+class ModbusLogic;
+class settingDialog;
 namespace Ui {
 class MainWindow;
 }
@@ -15,11 +17,31 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void putData();
+
 private:
     Ui::MainWindow *ui;
-    serialPort *serialPt = nullptr;
+    settingDialog *settings = nullptr;
+    QSerialPort *serialPort = nullptr;
+    ModbusLogic *mbLogic = nullptr;
 
     void initInterface();
+    void initActionConnects();
+    void initFunctionComboBox();
+    QByteArray createRequest();
+
+    void initCreateRequestConnects();
+
+private slots:
+    void sendData();
+    void chooseSendType();
+    void connectToPort();
+    void disconnectFromPort();
+    void updateCRC();
+
+    void applySettings();
+private slots:
+    void showSettings();
+
 };
 
 #endif // MAINWINDOW_H

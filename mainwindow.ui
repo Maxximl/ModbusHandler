@@ -14,14 +14,21 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
        <widget class="QPlainTextEdit" name="plainTextEdit"/>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QRadioButton" name="createRequestRadio">
+          <property name="text">
+           <string>Create Request:</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QGroupBox" name="createRequestGBox">
           <property name="enabled">
@@ -36,8 +43,8 @@
           <property name="checked">
            <bool>false</bool>
           </property>
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="2" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
               <widget class="QLabel" name="slaveIDlbl">
@@ -52,13 +59,27 @@
                 <number>247</number>
                </property>
                <property name="displayIntegerBase">
-                <number>16</number>
+                <number>10</number>
                </property>
               </widget>
              </item>
             </layout>
            </item>
-           <item row="4" column="0">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="funcCodeLbl">
+               <property name="text">
+                <string>Function Code:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="functionCode"/>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
               <widget class="QLabel" name="regAddrLbl">
@@ -69,6 +90,9 @@
              </item>
              <item>
               <widget class="QSpinBox" name="regAddress">
+               <property name="maximum">
+                <number>65535</number>
+               </property>
                <property name="displayIntegerBase">
                 <number>16</number>
                </property>
@@ -76,7 +100,28 @@
              </item>
             </layout>
            </item>
-           <item row="6" column="0">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="regQuantLbl">
+               <property name="text">
+                <string>Reg. Quantity:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="regQuantity">
+               <property name="maximum">
+                <number>65535</number>
+               </property>
+               <property name="displayIntegerBase">
+                <number>16</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
               <widget class="QLabel" name="CRClbl">
@@ -97,123 +142,31 @@
              </item>
             </layout>
            </item>
-           <item row="3" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <item>
-              <widget class="QLabel" name="funcCodeLbl">
-               <property name="text">
-                <string>Function Code:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="functionCode">
-               <item>
-                <property name="text">
-                 <string>01 (0x01)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>02 (0x02)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>03 (0x03)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>04 (0x04)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>05 (0x05)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>06 (0x06)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>15 (0x0F)</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>16 (0x10)</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="5" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QLabel" name="regQuantLbl">
-               <property name="text">
-                <string>Reg. Quantity:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="regQuantity"/>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="0">
-            <widget class="QRadioButton" name="createRequestRadio">
-             <property name="text">
-              <string>Create Request:</string>
-             </property>
-            </widget>
-           </item>
           </layout>
-          <widget class="QLabel" name="label_3">
-           <property name="geometry">
-            <rect>
-             <x>70</x>
-             <y>110</y>
-             <width>54</width>
-             <height>17</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="typeRequestGBox">
+         <widget class="QRadioButton" name="typeRequestRadio">
+          <property name="text">
+           <string>Type Request:</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox">
           <property name="title">
            <string/>
           </property>
-          <property name="checkable">
-           <bool>false</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="1" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
             <widget class="QLineEdit" name="typeRequestLineEdit">
              <property name="text">
               <string/>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QRadioButton" name="typeRequestRadio">
-             <property name="text">
-              <string>Type Request:</string>
-             </property>
-             <property name="checkable">
+             <property name="frame">
               <bool>true</bool>
              </property>
             </widget>
@@ -225,7 +178,7 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_8">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -247,6 +200,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="sendButton">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Send</string>
         </property>
@@ -270,19 +226,13 @@
      <string>File</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuConnect">
+   <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>Connect</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuDisconnect">
-    <property name="title">
-     <string>Disconnect</string>
+     <string>About</string>
     </property>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuConnect"/>
-   <addaction name="menuDisconnect"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="toolButtonStyle">

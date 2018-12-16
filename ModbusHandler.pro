@@ -27,18 +27,18 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    serial/serialport.cpp \
-    modbuslogic.cpp
+    modbuslogic.cpp \
+    serial/settingdialog.cpp
 
 HEADERS += \
         mainwindow.h \
-    serial/serialport.h \
     mainwindow.h \
-    modbuslogic.h
+    modbuslogic.h \
+    serial/settingdialog.h
 
 FORMS += \
         mainwindow.ui \
-    serial/serialportsettings.ui
+    serial/settingdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
