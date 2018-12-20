@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QMainWindow *parent = nullptr);
     ~MainWindow();
     void putData();
 
@@ -41,6 +41,8 @@ private slots:
     void applySettings();
 private slots:
     void showSettings();
+protected:
+    virtual void keyPressEvent(QKeyEvent *event);
 
 };
 

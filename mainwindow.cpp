@@ -5,8 +5,9 @@
 #include <QDebug>
 #include <QSpinBox>
 #include <modbuslogic.h>
+#include <QScrollBar>
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QMainWindow *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     settings(new settingDialog),
@@ -65,6 +66,13 @@ void MainWindow::sendData()
         serialPort->write(request);
         qDebug() << request;
     }
+    if(ui->typeRequestRadio->isChecked())
+    {
+        QByteArray request;
+        request = QByteArray::fromStdString(ui->typeRequestLineEdit->text().toStdString());
+        serialPort->write(request);
+        qDebug() << request;
+    }
 
 }
 
@@ -73,7 +81,7 @@ void MainWindow::putData()
    QByteArray newData;
    newData = serialPort->readAll();
    ui->plainTextEdit->insertPlainText(QString(newData) + '\n');
-
+   ui->plainTextEdit->verticalScrollBar()->setValue(ui->plainTextEdit->verticalScrollBar()->maximum());
 }
 
 void MainWindow::chooseSendType()
@@ -121,10 +129,10 @@ QByteArray MainWindow::createRequest()
     QByteArray createdRequestData;
 
 
-   createdRequestData = mbLogic->createRequest(static_cast<uint8_t>(ui->slaveID->text().toInt()),
+   createdRequestData = mbLogic->createRequest(static_cast<uint8_t>(ui->slaveID->value()),
                            static_cast<uint8_t>(ui->functionCode->currentData().toInt()),
-                           static_cast<uint16_t>(ui->regAddress->text().toInt()),
-                           static_cast<uint16_t>(ui->regQuantity->text().toInt()));
+                           static_cast<uint16_t>(ui->regAddress->value()),
+                           static_cast<uint16_t>(ui->regQuantity->value()));
     return createdRequestData;
 }
 
@@ -154,9 +162,20 @@ void MainWindow::updateCRC()
     QByteArray newRequest;
     uint16_t calculatedCRC = 0;
     newRequest = createRequest();
-    calculatedCRC = (static_cast<uint8_t>(newRequest.at(6)) << 8) | (static_cast<uint8_t>(newRequest.at(7)));
+    calculatedCRC = static_cast<uint8_t>(newRequest[6] << 8) | (static_cast<uint8_t>(newRequest[7]));
     qDebug() << calculatedCRC;
 
     ui->CRC->setText(QString::number(calculatedCRC, 16));
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Return)
+    {
+        sendData();
+    }
+    else
+    {
+      QWidget::keyPressEvent(event);
+    }
+}

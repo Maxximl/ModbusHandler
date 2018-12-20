@@ -21,8 +21,8 @@ QByteArray ModbusLogic::createRequest(uint8_t slaveID,
     uint16_t CRC;
     CRC = crc_chk(arrRequest, 6);
 
-    arrRequest[6] = CRC >> 8;
-    arrRequest[7] = CRC & 0xFF;
+    arrRequest[7] = CRC >> 8;
+    arrRequest[6] = CRC & 0xFF;
     
     QByteArray request;
     request = QByteArray(reinterpret_cast<char*>(arrRequest), 8);
